@@ -1,0 +1,17 @@
+contents.xcworkspacedata
+.DS_Store
+local.properties
+*.iml
+*.rar
+*.iml
+*.swp
+*.un~
+*.xctest
+*.xcuserstate
+*.plist
+*.xcscheme
+*.xcbkptlist
+xcuserdata/
+xcuserdata
+build
+
