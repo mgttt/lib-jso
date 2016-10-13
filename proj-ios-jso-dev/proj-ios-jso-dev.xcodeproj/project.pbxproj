@@ -13,8 +13,8 @@
 		1F16DAC11D95283A00C23138 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F16DABF1D95283A00C23138 /* LaunchScreen.storyboard */; };
 		1F16DACC1D95283B00C23138 /* proj_ios_jso_devTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F16DACB1D95283B00C23138 /* proj_ios_jso_devTests.m */; };
 		1F16DAD71D95283B00C23138 /* proj_ios_jso_devUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F16DAD61D95283B00C23138 /* proj_ios_jso_devUITests.m */; };
-		1F16DAE81D95284900C23138 /* JSO.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F16DAE51D95284900C23138 /* JSO.m */; };
 		1F16DAEC1D9528B000C23138 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F16DAEB1D9528B000C23138 /* MainViewController.m */; };
+		8E2CE4D01DAF0E3600F0850C /* JSO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2CE4CF1DAF0E3600F0850C /* JSO.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,10 +48,10 @@
 		1F16DAD21D95283B00C23138 /* proj-ios-jso-devUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "proj-ios-jso-devUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F16DAD61D95283B00C23138 /* proj_ios_jso_devUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = proj_ios_jso_devUITests.m; sourceTree = "<group>"; };
 		1F16DAD81D95283B00C23138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F16DAE41D95284900C23138 /* JSO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSO.h; sourceTree = "<group>"; };
-		1F16DAE51D95284900C23138 /* JSO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSO.m; sourceTree = "<group>"; };
 		1F16DAEA1D9528B000C23138 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		1F16DAEB1D9528B000C23138 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8E2CE4CF1DAF0E3600F0850C /* JSO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSO.m; path = ../JSO.m; sourceTree = "<group>"; };
+		8E2CE4D11DAF0E4000F0850C /* JSO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSO.h; path = ../JSO.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +82,8 @@
 		1F16DAA51D95283A00C23138 = {
 			isa = PBXGroup;
 			children = (
+				8E2CE4D11DAF0E4000F0850C /* JSO.h */,
+				8E2CE4CF1DAF0E3600F0850C /* JSO.m */,
 				1F16DAB01D95283A00C23138 /* proj-ios-jso-dev */,
 				1F16DACA1D95283B00C23138 /* proj-ios-jso-devTests */,
 				1F16DAD51D95283B00C23138 /* proj-ios-jso-devUITests */,
@@ -102,8 +104,6 @@
 		1F16DAB01D95283A00C23138 /* proj-ios-jso-dev */ = {
 			isa = PBXGroup;
 			children = (
-				1F16DAE41D95284900C23138 /* JSO.h */,
-				1F16DAE51D95284900C23138 /* JSO.m */,
 				1F16DAB41D95283A00C23138 /* AppDelegate.h */,
 				1F16DAB51D95283A00C23138 /* AppDelegate.m */,
 				1F16DAEA1D9528B000C23138 /* MainViewController.h */,
@@ -271,7 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F16DAE81D95284900C23138 /* JSO.m in Sources */,
+				8E2CE4D01DAF0E3600F0850C /* JSO.m in Sources */,
 				1F16DAB61D95283A00C23138 /* AppDelegate.m in Sources */,
 				1F16DAEC1D9528B000C23138 /* MainViewController.m in Sources */,
 				1F16DAB31D95283A00C23138 /* main.m in Sources */,

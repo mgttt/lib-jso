@@ -1,4 +1,4 @@
-//https://github.com/SZU-BDI/app-hybrid-demo/blob/master/proj-ios-jso-dev/proj-ios-jso-dev/JSO.h
+//https://github.com/SZU-BDI/lib-ios-jso/blob/master/JSO.h
 //Author: 双虎, Wanjo Chan
 
 #import <Foundation/Foundation.h>

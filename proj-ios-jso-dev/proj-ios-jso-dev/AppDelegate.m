@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-//#import "JSODoing.h"
-//#import "JSO.h"
 
 
 @interface AppDelegate ()
