@@ -46,8 +46,11 @@
     
     va_list argumentList;
     va_start(argumentList,idid);
-    id arg2=va_arg(argumentList,NSString *);
-    BOOL flagThrowEx=(((Boolean) arg2)==YES);
+    
+    //id arg2=va_arg(argumentList,NSString *);//旧的ios不支持？
+    //BOOL flagThrowEx=(((Boolean) arg2)==YES);
+    
+    BOOL flagThrowEx=NO;
     
     va_end(argumentList);
     
