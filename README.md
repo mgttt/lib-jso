@@ -1,6 +1,6 @@
 # lib-ios-jso
 
-a tiny JSON Object-String bidirectional library (JSO.h/JSO.m)
+a tiny JSON Object-String bidirectional library for iOS (JSO.h/JSO.m)
 
 Development should be done.  but github-pull-request is welcome!
 
