@@ -25,7 +25,7 @@
     return idid;
 }
 
-+ (NSString *)id2s:(id)idid,...
++ (NSString *)id2s:(id)idid flagThrowEx:(BOOL)flagThrowEx
 {
     //if($idid==null) return "null";
     if (idid==nil) return @"null";
@@ -44,15 +44,14 @@
         return [idid stringValue];
     }
     
-    va_list argumentList;
-    va_start(argumentList,idid);
+    //    va_list argumentList;
+    //    va_start(argumentList,idid);
     
-    //id arg2=va_arg(argumentList,NSString *);//旧的ios不支持？
-    //BOOL flagThrowEx=(((Boolean) arg2)==YES);
+    //    id arg2=nil;
+    //    arg2 = va_arg(argumentList,id);//failed for iphone4...
+    //    BOOL flagThrowEx=(((Boolean) arg2)==YES);
     
-    BOOL flagThrowEx=NO;
-    
-    va_end(argumentList);
+    //    va_end(argumentList);
     
     NSError *error;
     NSData *result =nil;
@@ -77,6 +76,11 @@
     // $rt= (new String())->initWithData($result, NSUTF8StringEncoding);
     NSString *rt = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
     return rt;
+    
+}
++ (NSString *)id2s:(id)idid
+{
+    return [self id2s:idid flagThrowEx:NO];
 }
 
 + (JSO *)s2o:(NSString *)s
@@ -145,7 +149,6 @@
     return nil;
 }
 
-
 - (void)setChild:(NSString *)k JSO:(JSO *)o{
     
     if (_innerid==nil) return;
@@ -189,12 +192,23 @@
     if (_innerid==nil) return;
     @try{
         NSMutableDictionary *ddd=(NSMutableDictionary *)_innerid;
-        [ddd removeObjectForKey:k];//TODO not test yet...
+        [ddd removeObjectForKey:k];
     }
     @catch (NSException *theException)
     {
         NSLog(@"setChild() Exception: %@", theException);
-        //NSLog(@"setChild() %@", childid);
     }
 }
+
+- (NSArray *)getChildKeys
+{
+    if (_innerid!=nil) {
+        NSArray *keys=[_innerid allKeys];
+        return keys;
+    }else{
+        return [[NSMutableArray alloc] copy];
+    }
+}
+
+
 @end
