@@ -10,7 +10,7 @@
     NSData *data = [s dataUsingEncoding:NSUTF8StringEncoding];
     NSError *error = nil;
     
-    //$idid = NSJSONSerialization::JSONObjectWithData($data, $optinos=NSJSONReadingAllowFragments, &$error);
+    //[PHP]$idid = NSJSONSerialization::JSONObjectWithData($data, $optinos=NSJSONReadingAllowFragments, &$error);
     //    id idid = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
     id idid = [NSJSONSerialization
                JSONObjectWithData:data
@@ -27,15 +27,15 @@
 
 + (NSString *)id2s:(id)idid flagThrowEx:(BOOL)flagThrowEx
 {
-    //if($idid==null) return "null";
+    //[PHP]if($idid==null) return "null";
     if (idid==nil) return @"null";
     
-    //if (is_string($idid)) return $idid;
+    //[PHP]if (is_string($idid)) return $idid;
     if ([idid isKindOfClass:[NSString class]]){
         return (NSString *)idid;
     }
     
-    //if(is_boolean($idid)) return idid?"true":"false";
+    //[PHP]if(is_boolean($idid)) return idid?"true":"false";
     if([idid isKindOfClass:[NSNumber class]]){
         if (strcmp([idid objCType], [@(NO) objCType]) == 0){
             return [idid boolValue] ? @"true" : @"false";
@@ -43,15 +43,6 @@
         //TODO improve later float/double/int ...?
         return [idid stringValue];
     }
-    
-    //    va_list argumentList;
-    //    va_start(argumentList,idid);
-    
-    //    id arg2=nil;
-    //    arg2 = va_arg(argumentList,id);//failed for iphone4...
-    //    BOOL flagThrowEx=(((Boolean) arg2)==YES);
-    
-    //    va_end(argumentList);
     
     NSError *error;
     NSData *result =nil;
@@ -73,7 +64,7 @@
     }
     
     // encode to string
-    // $rt= (new String())->initWithData($result, NSUTF8StringEncoding);
+    //[PHP] $rt= (new String())->initWithData($result, NSUTF8StringEncoding);
     NSString *rt = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
     return rt;
     
@@ -85,10 +76,10 @@
 
 + (JSO *)s2o:(NSString *)s
 {
-    // $idid=$this->s2id($s);
+    //[PHP] $idid=$this->s2id($s);
     id idid = [self s2id:s];
     
-    //$o=new JSO;
+    //[PHP] $o=new JSO;
     JSO *o = [[JSO alloc] init];
     
     //$o->setValue("_innerid",$idid);
@@ -101,7 +92,7 @@
 {
     id idid = [o valueForKey:@"_innerid"];
     
-    //$s=$this->id2s($idid);
+    //[PHP] $s=$this->id2s($idid);
     NSString *s = [self id2s:idid];
     
     return s;
@@ -109,16 +100,16 @@
 
 - (NSString *)toString
 {
-    //return JSO::o2s($this);
+    //[PHP] return JSO::o2s($this);
     return [JSO o2s:self];
 }
 
 - (void)fromString:(NSString *)s
 {
-    //$idid=JSO::s2id($s);
+    //[PHP] $idid=JSO::s2id($s);
     id idid = [JSO s2id:s];
     
-    //$this->setValue("_innerid", $idid);
+    //[PHP] $this->setValue("_innerid", $idid);
     [self setValue:idid forKey:@"_innerid"];
 }
 

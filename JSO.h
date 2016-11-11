@@ -1,6 +1,9 @@
 //https://github.com/SZU-BDI/lib-ios-jso/blob/master/JSO.h
 //Author: 双虎, Wanjo Chan
 
+//TODO add (like copy ..) merge(to, from, [selected])
+// copy(from, to, [selected])
+
 #import <Foundation/Foundation.h>
 
 #ifndef JSO_h
