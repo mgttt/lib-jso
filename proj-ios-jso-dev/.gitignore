@@ -8,7 +8,6 @@ local.properties
 *.un~
 *.xctest
 *.xcuserstate
-*.plist
 *.xcscheme
 *.xcbkptlist
 xcuserdata/
