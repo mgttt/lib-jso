@@ -4,11 +4,11 @@ a tiny JSON Object-String bidirectional library for iOS (JSO.h/JSO.m)
 
 Development should be done.  but github-pull-request is welcome!
 
-# 【CHS】
+for Android/Java Version, please click (https://github.com/SZU-BDI/app-hybrid-core/blob/master/lib-android/szu.bdi.hybrid.core/src/main/java/szu/bdi/hybrid/core/JSO.java)
 
-一个迷你的 iOS-JSON 库，使用 id 类做为中转，本质上其实是 原生 json的一个小封装，让代码写得更轻松
+# Trick
 
-基本已经完成，不过仍然欢迎 PULL REQUEST
+using "id" as a data holder.
 
 # Usage
 
