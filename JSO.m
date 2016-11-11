@@ -18,7 +18,7 @@
                error:&error];
     
     if (error.description) {
-        NSLog(@"s2id() err=>%@", error.description);
+        NSLog(@"s2id(%@) err=>%@", s, error.description);
         idid=s;
     }
     
@@ -91,7 +91,12 @@
 + (NSString *)o2s:(JSO *)o
 {
     id idid = [o valueForKey:@"_innerid"];
-    
+
+//    if ([idid isKindOfClass:[NSString class]]){
+//        NSString *s= [NSString stringWithFormat:@"\"%@\"",
+//                [(NSString *)idid stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]];
+//        return s;
+//    }
     //[PHP] $s=$this->id2s($idid);
     NSString *s = [self id2s:idid];
     
@@ -122,9 +127,6 @@
     
     if (_innerid==nil) return nil;
     
-    //if ($this->innerid){ }
-    //if ([_innerid isKindOfClass:[NSDictionary class]]) {
-    
     id subid = [_innerid valueForKey:key];
     
     if(subid != nil){
@@ -136,7 +138,6 @@
         
         return o;
     }
-    //}
     return nil;
 }
 
@@ -194,11 +195,15 @@
 - (NSArray *)getChildKeys
 {
     if (_innerid!=nil) {
-        NSArray *keys=[_innerid allKeys];
-        return keys;
-    }else{
-        return [[NSMutableArray alloc] copy];
+        @try{
+            return [_innerid allKeys];
+        }
+        @catch (NSException *theException)
+        {
+            NSLog(@"setChild() Exception: %@", theException);
+        }
     }
+    return [[NSMutableArray arrayWithCapacity:0] copy];
 }
 
 
