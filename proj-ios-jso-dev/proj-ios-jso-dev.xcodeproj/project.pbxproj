@@ -7,24 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F16DAB31D95283A00C23138 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F16DAB21D95283A00C23138 /* main.m */; };
-		1F16DAB61D95283A00C23138 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F16DAB51D95283A00C23138 /* AppDelegate.m */; };
-		1F16DABE1D95283A00C23138 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F16DABD1D95283A00C23138 /* Assets.xcassets */; };
-		1F16DAEC1D9528B000C23138 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F16DAEB1D9528B000C23138 /* MainViewController.m */; };
 		8E2CE4D01DAF0E3600F0850C /* JSO.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E2CE4CF1DAF0E3600F0850C /* JSO.m */; };
+		8E6F7A461DD5DF7F00E0858D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F7A3E1DD5DF7F00E0858D /* AppDelegate.m */; };
+		8E6F7A471DD5DF7F00E0858D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F7A3F1DD5DF7F00E0858D /* Assets.xcassets */; };
+		8E6F7A481DD5DF7F00E0858D /* gvim.gitignore.bat in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F7A401DD5DF7F00E0858D /* gvim.gitignore.bat */; };
+		8E6F7A491DD5DF7F00E0858D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F7A411DD5DF7F00E0858D /* Info.plist */; };
+		8E6F7A4A1DD5DF7F00E0858D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F7A421DD5DF7F00E0858D /* LaunchScreen.storyboard */; };
+		8E6F7A4B1DD5DF7F00E0858D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F7A431DD5DF7F00E0858D /* main.m */; };
+		8E6F7A4C1DD5DF7F00E0858D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F7A451DD5DF7F00E0858D /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F16DAAE1D95283A00C23138 /* proj-ios-jso-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "proj-ios-jso-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F16DAB21D95283A00C23138 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1F16DAB41D95283A00C23138 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		1F16DAB51D95283A00C23138 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1F16DABD1D95283A00C23138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1F16DAC21D95283A00C23138 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F16DAEA1D9528B000C23138 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		1F16DAEB1D9528B000C23138 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8E2CE4CF1DAF0E3600F0850C /* JSO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSO.m; path = ../JSO.m; sourceTree = "<group>"; };
 		8E2CE4D11DAF0E4000F0850C /* JSO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSO.h; path = ../JSO.h; sourceTree = "<group>"; };
+		8E6F7A3D1DD5DF7F00E0858D /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		8E6F7A3E1DD5DF7F00E0858D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		8E6F7A3F1DD5DF7F00E0858D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		8E6F7A401DD5DF7F00E0858D /* gvim.gitignore.bat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gvim.gitignore.bat; sourceTree = SOURCE_ROOT; };
+		8E6F7A411DD5DF7F00E0858D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		8E6F7A421DD5DF7F00E0858D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		8E6F7A431DD5DF7F00E0858D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
+		8E6F7A441DD5DF7F00E0858D /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = SOURCE_ROOT; };
+		8E6F7A451DD5DF7F00E0858D /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,10 +46,10 @@
 		1F16DAA51D95283A00C23138 = {
 			isa = PBXGroup;
 			children = (
-				8E2CE4D11DAF0E4000F0850C /* JSO.h */,
-				8E2CE4CF1DAF0E3600F0850C /* JSO.m */,
-				1F16DAB01D95283A00C23138 /* proj-ios-jso-dev */,
+				8E6F7A4E1DD5E05400E0858D /* JSO */,
+				1F16DAB01D95283A00C23138 /* src */,
 				1F16DAAF1D95283A00C23138 /* Products */,
+				8E6F7A4D1DD5E02800E0858D /* Support */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,18 +61,38 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1F16DAB01D95283A00C23138 /* proj-ios-jso-dev */ = {
+		1F16DAB01D95283A00C23138 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				1F16DAB21D95283A00C23138 /* main.m */,
-				1F16DAB41D95283A00C23138 /* AppDelegate.h */,
-				1F16DAB51D95283A00C23138 /* AppDelegate.m */,
-				1F16DAEA1D9528B000C23138 /* MainViewController.h */,
-				1F16DAEB1D9528B000C23138 /* MainViewController.m */,
-				1F16DABD1D95283A00C23138 /* Assets.xcassets */,
-				1F16DAC21D95283A00C23138 /* Info.plist */,
+				8E6F7A3D1DD5DF7F00E0858D /* AppDelegate.h */,
+				8E6F7A3E1DD5DF7F00E0858D /* AppDelegate.m */,
+				8E6F7A421DD5DF7F00E0858D /* LaunchScreen.storyboard */,
+				8E6F7A431DD5DF7F00E0858D /* main.m */,
+				8E6F7A441DD5DF7F00E0858D /* MainViewController.h */,
+				8E6F7A451DD5DF7F00E0858D /* MainViewController.m */,
 			);
+			name = src;
 			path = "proj-ios-jso-dev";
+			sourceTree = "<group>";
+		};
+		8E6F7A4D1DD5E02800E0858D /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				8E6F7A401DD5DF7F00E0858D /* gvim.gitignore.bat */,
+				8E6F7A411DD5DF7F00E0858D /* Info.plist */,
+				8E6F7A3F1DD5DF7F00E0858D /* Assets.xcassets */,
+			);
+			name = Support;
+			path = "proj-ios-jso-dev";
+			sourceTree = "<group>";
+		};
+		8E6F7A4E1DD5E05400E0858D /* JSO */ = {
+			isa = PBXGroup;
+			children = (
+				8E2CE4D11DAF0E4000F0850C /* JSO.h */,
+				8E2CE4CF1DAF0E3600F0850C /* JSO.m */,
+			);
+			name = JSO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +152,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F16DABE1D95283A00C23138 /* Assets.xcassets in Resources */,
+				8E6F7A491DD5DF7F00E0858D /* Info.plist in Resources */,
+				8E6F7A481DD5DF7F00E0858D /* gvim.gitignore.bat in Resources */,
+				8E6F7A471DD5DF7F00E0858D /* Assets.xcassets in Resources */,
+				8E6F7A4A1DD5DF7F00E0858D /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,9 +167,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E2CE4D01DAF0E3600F0850C /* JSO.m in Sources */,
-				1F16DAB61D95283A00C23138 /* AppDelegate.m in Sources */,
-				1F16DAEC1D9528B000C23138 /* MainViewController.m in Sources */,
-				1F16DAB31D95283A00C23138 /* main.m in Sources */,
+				8E6F7A4C1DD5DF7F00E0858D /* MainViewController.m in Sources */,
+				8E6F7A4B1DD5DF7F00E0858D /* main.m in Sources */,
+				8E6F7A461DD5DF7F00E0858D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "proj-ios-jso-dev/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "info.cmptech.proj-ios-jso-dev";
@@ -248,7 +276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "proj-ios-jso-dev/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "info.cmptech.proj-ios-jso-dev";
