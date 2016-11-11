@@ -13,5 +13,6 @@ local.properties
 *.xcbkptlist
 xcuserdata/
 xcuserdata
+*.xcuserdatad/
 build
 
