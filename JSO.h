@@ -10,7 +10,8 @@
 #define JSO_h
 
 @interface JSO : NSObject{
-    id _innerid;
+    // _jv as "JSO-Value"
+    id _jv;
 }
 
 + (id)s2id:(NSString *)s;
@@ -21,6 +22,7 @@
 + (NSString *)o2s:(JSO *)o;
 
 - (NSString *)toString;
+- (NSString *)toString :(BOOL)quote;
 - (void)fromString:(NSString *)s;
 
 - (JSO *)getChild:(NSString *)k;
@@ -28,6 +30,7 @@
 - (JSO *)getChildByPath:(NSString *)path;
 - (void)removeChild:(NSString *)k;
 - (NSArray *)getChildKeys;
+-(JSO *) basicMerge:(JSO *)jso;
 
 @end
 
