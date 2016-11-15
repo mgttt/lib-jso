@@ -31,6 +31,8 @@
 - (NSArray *) getChildKeys;
 - (JSO *) basicMerge :(JSO *)jso;
 
+- (JSO *) copy;
+
 @end
 
 #endif

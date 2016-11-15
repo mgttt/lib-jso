@@ -230,5 +230,9 @@
     return self;
 }
 
+- (JSO *) copy
+{
+    return [JSO s2o:[self toString]];
+}
 
 @end
