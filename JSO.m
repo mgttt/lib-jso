@@ -5,8 +5,7 @@
 
 @implementation JSO
 
-
-+ (id)s2id:(NSString *)s
++ (id) s2id :(NSString *)s
 {
     NSError *error = nil;
     
@@ -22,7 +21,7 @@
     return idid;
 }
 
-+ (NSString *)id2s:(id)idid flagThrowEx:(BOOL)flagThrowEx
++ (NSString *) id2s :(id)idid :(BOOL)flagThrowEx
 {
     if (idid==nil) return @"null";
     
@@ -58,12 +57,12 @@
     NSString *rt = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
     return rt;
 }
-+ (NSString *)id2s:(id)idid
++ (NSString *) id2s :(id)idid
 {
-    return [self id2s:idid flagThrowEx:NO];
+    return [self id2s:idid :NO];
 }
 
-+ (JSO *)s2o:(NSString *)s
++ (JSO *) s2o :(NSString *)s
 {
     id idid = [self s2id:s];
     
@@ -74,54 +73,57 @@
     return o;
 }
 
-+ (NSString *)o2s:(JSO *)o :(BOOL) quote
++ (NSString *) o2s:(JSO *)o :(BOOL) quote
 {
     if(o==nil) return nil;
     return [o toString :quote];
 }
-+ (NSString *)o2s:(JSO *)o
++ (NSString *) o2s:(JSO *)o
 {
     if(o==nil) return nil;
     return [o toString :FALSE];
 }
--(NSString *)JSONString:(NSString *)aString {
-    NSMutableString *s = [NSMutableString stringWithString:aString];
-    [s replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-    [s replaceOccurrencesOfString:@"/" withString:@"\\/" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-    [s replaceOccurrencesOfString:@"\n" withString:@"\\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-    [s replaceOccurrencesOfString:@"\b" withString:@"\\b" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-    [s replaceOccurrencesOfString:@"\f" withString:@"\\f" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-    [s replaceOccurrencesOfString:@"\r" withString:@"\\r" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-    [s replaceOccurrencesOfString:@"\t" withString:@"\\t" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-    return [NSString stringWithString:s];
-}
-- (NSString *)toString :(BOOL)quote
+
+////@ref http://www.codza.com/converting-nsstring-to-json-string
+//-(NSString *) JSONString :(NSString *)aString {
+//    NSMutableString *s = [NSMutableString stringWithString:aString];
+//    [s replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+//    [s replaceOccurrencesOfString:@"/" withString:@"\\/" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+//    [s replaceOccurrencesOfString:@"\n" withString:@"\\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+//    [s replaceOccurrencesOfString:@"\b" withString:@"\\b" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+//    [s replaceOccurrencesOfString:@"\f" withString:@"\\f" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+//    [s replaceOccurrencesOfString:@"\r" withString:@"\\r" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+//    [s replaceOccurrencesOfString:@"\t" withString:@"\\t" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
+//    return [NSString stringWithString:s];
+//}
+- (NSString *) toString :(BOOL)quote
 {
     if(quote){
         //only string type needs quote...
         if ([_jv isKindOfClass:[NSString class]]){
-//            //return [NSString stringWithFormat:@"\"%@\"",[(NSString *)_jv stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]];
-//            id idid = @{@"V":(NSString *)_jv };
-//            NSString *s= [JSO id2s:idid];
-//            return s;
-            NSString *s=[self JSONString:(NSString *)_jv];
+            //NSString *s=[self JSONString:(NSString *)_jv];
+            //            NSString *s= [JSO id2s:@[(NSString *)_jv]];
+            
+            //NSString *s = [[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:@[(NSString *)_jv] encoding:NSUTF8StringEncoding]] ];
+            //NSString *s=[JSO id2s:@[(NSString *)_jv]];
+            
+            NSString *s=(NSString *)_jv;
+            s=[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:@[s] options:0 error:nil] encoding:NSUTF8StringEncoding];
+            s=[[s substringToIndex:([s length]-2)] substringFromIndex:1];
             return s;
         }
     }
     return [JSO id2s:_jv];
-    
-    //    //[PHP] return JSO::o2s($this);
-    //    return [JSO o2s :self :quote];
 }
 
-- (NSString *)toString
+- (NSString *) toString
 {
     return [self toString :FALSE];
     //    //[PHP] return JSO::o2s($this);
     //    return [JSO o2s :self :FALSE];
 }
 
-- (void)fromString:(NSString *)s
+- (void) fromString :(NSString *)s
 {
     //[PHP] $idid=JSO::s2id($s);
     id idid = [JSO s2id:s];
@@ -130,7 +132,7 @@
     [self setValue:idid forKey:@"_jv"];
 }
 
-- (JSO *)getChild:(NSString *)key
+- (JSO *) getChild :(NSString *)key
 {
     if(true)
         return [self getChildByPath:key];
@@ -153,7 +155,7 @@
     return nil;
 }
 
-- (void)setChild:(NSString *)k JSO:(JSO *)o{
+- (void) setChild:(NSString *)k JSO:(JSO *)o{
     
     if (_jv==nil) return;
     id childid=[o valueForKey:@"_jv"];
@@ -169,7 +171,7 @@
     }
 }
 
--(JSO *)getChildByPath:(NSString *)path{
+-(JSO *) getChildByPath :(NSString *)path{
     if (_jv==nil) return nil;
     id subid;
     @try{
@@ -192,7 +194,7 @@
     }
 }
 
-- (void)removeChild:(NSString *)k{
+- (void) removeChild :(NSString *)k{
     if (_jv==nil) return;
     @try{
         NSMutableDictionary *ddd=(NSMutableDictionary *)_jv;
@@ -204,7 +206,7 @@
     }
 }
 
-- (NSArray *)getChildKeys
+- (NSArray *) getChildKeys
 {
     if (_jv!=nil) {
         @try{
