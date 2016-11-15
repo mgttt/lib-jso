@@ -11,7 +11,6 @@
 		8E6F7A461DD5DF7F00E0858D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F7A3E1DD5DF7F00E0858D /* AppDelegate.m */; };
 		8E6F7A471DD5DF7F00E0858D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F7A3F1DD5DF7F00E0858D /* Assets.xcassets */; };
 		8E6F7A481DD5DF7F00E0858D /* gvim.gitignore.bat in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F7A401DD5DF7F00E0858D /* gvim.gitignore.bat */; };
-		8E6F7A491DD5DF7F00E0858D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F7A411DD5DF7F00E0858D /* Info.plist */; };
 		8E6F7A4A1DD5DF7F00E0858D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F7A421DD5DF7F00E0858D /* LaunchScreen.storyboard */; };
 		8E6F7A4B1DD5DF7F00E0858D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F7A431DD5DF7F00E0858D /* main.m */; };
 		8E6F7A4C1DD5DF7F00E0858D /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F7A451DD5DF7F00E0858D /* MainViewController.m */; };
@@ -121,7 +120,7 @@
 		1F16DAA61D95283A00C23138 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Cmptech;
 				TargetAttributes = {
 					1F16DAAD1D95283A00C23138 = {
@@ -152,7 +151,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E6F7A491DD5DF7F00E0858D /* Info.plist in Resources */,
 				8E6F7A481DD5DF7F00E0858D /* gvim.gitignore.bat in Resources */,
 				8E6F7A471DD5DF7F00E0858D /* Assets.xcassets in Resources */,
 				8E6F7A4A1DD5DF7F00E0858D /* LaunchScreen.storyboard in Resources */,
@@ -190,8 +188,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -235,8 +235,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
