@@ -10,7 +10,7 @@
 #define JSO_h
 
 @interface JSO : NSObject{
-    id _jv;// as "JSO-Value"
+    id _jv;// internal "JSO-Value"
 }
 
 + (id)s2id:(NSString *)s;

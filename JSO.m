@@ -8,54 +8,26 @@
 + (id) s2id :(NSString *)s
 {
     NSError *error = nil;
-    
+
     id idid = [NSJSONSerialization
-               JSONObjectWithData:[s dataUsingEncoding:NSUTF8StringEncoding]
+               JSONObjectWithData:[[[@"[" stringByAppendingString:s] stringByAppendingString:@"]"] dataUsingEncoding:NSUTF8StringEncoding]
                options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves
                error:&error];
     
     if (error.description) {
-        NSLog(@"s2id(%@) maybe pure string => %@", s, error.description);
+        NSLog(@"s2id(%@) err => %@", s, error.description);
         idid=s;
+    }else{
+        return [idid objectAtIndex:0];
     }
     return idid;
 }
 
 + (NSString *) id2s :(id)idid :(BOOL)flagThrowEx
 {
-    if (idid==nil) return @"null";
-    
-    if ([idid isKindOfClass:[NSString class]]){
-        return (NSString *)idid;
-    }
-    
-    if([idid isKindOfClass:[NSNumber class]]){
-        if (strcmp([idid objCType], [@(NO) objCType]) == 0){
-            return [idid boolValue] ? @"true" : @"false";
-        }
-        return [idid stringValue];
-    }
-    
-    NSError *error;
-    NSData *result =nil;
-    if (flagThrowEx) {
-        result = [NSJSONSerialization dataWithJSONObject:idid options:0 error:&error];
-    }else{
-        @try
-        {
-            result = [NSJSONSerialization dataWithJSONObject:idid options:0 error:&error];
-        }
-        @catch (NSException *theException)
-        {
-            NSLog(@"id2s(%@) Exception: %@", idid, theException);
-        }
-    }
-    if(error.description!=nil){
-        NSLog(@"id2s() err=> %@", error.description);
-    }
-    
-    NSString *rt = [[NSString alloc] initWithData:result encoding:NSUTF8StringEncoding];
-    return rt;
+    NSString * s=[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:@[idid] options:0 error:nil] encoding:NSUTF8StringEncoding];
+    s=[[s substringToIndex:([s length]-1)] substringFromIndex:1];
+    return s;
 }
 + (NSString *) id2s :(id)idid
 {
@@ -84,33 +56,13 @@
     return [o toString :FALSE];
 }
 
-////@ref http://www.codza.com/converting-nsstring-to-json-string
-//-(NSString *) JSONString :(NSString *)aString {
-//    NSMutableString *s = [NSMutableString stringWithString:aString];
-//    [s replaceOccurrencesOfString:@"\"" withString:@"\\\"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-//    [s replaceOccurrencesOfString:@"/" withString:@"\\/" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-//    [s replaceOccurrencesOfString:@"\n" withString:@"\\n" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-//    [s replaceOccurrencesOfString:@"\b" withString:@"\\b" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-//    [s replaceOccurrencesOfString:@"\f" withString:@"\\f" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-//    [s replaceOccurrencesOfString:@"\r" withString:@"\\r" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-//    [s replaceOccurrencesOfString:@"\t" withString:@"\\t" options:NSCaseInsensitiveSearch range:NSMakeRange(0, [s length])];
-//    return [NSString stringWithString:s];
-//}
 - (NSString *) toString :(BOOL)quote
 {
-    if(quote){
-        //only string type needs quote...
-        if ([_jv isKindOfClass:[NSString class]]){
-            //NSString *s=[self JSONString:(NSString *)_jv];
-            //            NSString *s= [JSO id2s:@[(NSString *)_jv]];
-            
-            //NSString *s = [[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:@[(NSString *)_jv] encoding:NSUTF8StringEncoding]] ];
-            //NSString *s=[JSO id2s:@[(NSString *)_jv]];
-            
-            NSString *s=(NSString *)_jv;
-            s=[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:@[s] options:0 error:nil] encoding:NSUTF8StringEncoding];
-            s=[[s substringToIndex:([s length]-2)] substringFromIndex:1];
-            return s;
+    if ([_jv isKindOfClass:[NSString class]]){
+        if(quote){
+            [JSO id2s:_jv];
+        }else{
+            return (NSString *)_jv;
         }
     }
     return [JSO id2s:_jv];
@@ -119,16 +71,12 @@
 - (NSString *) toString
 {
     return [self toString :FALSE];
-    //    //[PHP] return JSO::o2s($this);
-    //    return [JSO o2s :self :FALSE];
 }
 
 - (void) fromString :(NSString *)s
 {
-    //[PHP] $idid=JSO::s2id($s);
     id idid = [JSO s2id:s];
     
-    //[PHP] $this->setValue("_jv", $idid);
     [self setValue:idid forKey:@"_jv"];
 }
 
@@ -144,10 +92,8 @@
     id subid = [_jv valueForKey:key];
     
     if(subid != nil){
-        //$o=new JSO;
         JSO *o =[[JSO alloc] init];
         
-        //$o->setValue("_jv",$idid);
         [o setValue:subid forKey:@"_jv"];
         
         return o;
@@ -159,7 +105,7 @@
     
     if (_jv==nil) return;
     id childid=[o valueForKey:@"_jv"];
-    if(nil==childid)return;//TODO make self as object?
+    if(nil==childid)return;
     @try{
         NSMutableDictionary *ddd=(NSMutableDictionary *)_jv;
         [ddd setObject:childid forKey:k];
