@@ -30,6 +30,12 @@
     s=[[s substringToIndex:([s length]-1)] substringFromIndex:1];
     return s;
 }
++ (JSO *) id2o :(id) idid
+{
+    JSO * rt=[[JSO alloc] init];
+    [rt setValue:idid forKey:@"_jv"];
+    return rt;
+}
 + (NSString *) id2s :(id)idid
 {
     return [self id2s:idid :NO];
@@ -37,13 +43,14 @@
 
 + (JSO *) s2o :(NSString *)s
 {
-    id idid = [self s2id:s];
-    
-    JSO *o = [[JSO alloc] init];
-    
-    [o setValue:idid forKey:@"_jv"];
-    
-    return o;
+    //    id idid = [self s2id:s];
+    //
+    //    JSO *o = [[JSO alloc] init];
+    //
+    //    [o setValue:idid forKey:@"_jv"];
+    //
+    //    return o;
+    return [self id2o:[self s2id:s]];
 }
 
 + (NSString *) o2s:(JSO *)o :(BOOL) quote
@@ -55,6 +62,11 @@
 {
     if(o==nil) return nil;
     return [o toString :FALSE];
+}
+
+- (id) toId
+{
+    return _jv;
 }
 
 - (NSString *) toString :(BOOL)quote

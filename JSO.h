@@ -17,9 +17,12 @@
 + (NSString *) id2s :(id)idid :(BOOL)flagThrowEx;
 + (NSString *) id2s :(id)idid;
 
++ (JSO *) id2o :(id) idid;
+
 + (JSO *) s2o:(NSString *)s;
 + (NSString *) o2s:(JSO *)o;
 
+- (id) toId;
 - (NSString *) toString :(BOOL)quote;
 - (NSString *) toString;
 - (void) fromString :(NSString *)s;
