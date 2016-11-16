@@ -8,7 +8,7 @@
 + (id) s2id :(NSString *)s
 {
     NSError *error = nil;
-
+    
     id idid = [NSJSONSerialization
                JSONObjectWithData:[[[@"[" stringByAppendingString:s] stringByAppendingString:@"]"] dataUsingEncoding:NSUTF8StringEncoding]
                options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves
@@ -25,6 +25,7 @@
 
 + (NSString *) id2s :(id)idid :(BOOL)flagThrowEx
 {
+    if(nil==idid) return @"null";
     NSString * s=[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:@[idid] options:0 error:nil] encoding:NSUTF8StringEncoding];
     s=[[s substringToIndex:([s length]-1)] substringFromIndex:1];
     return s;
@@ -58,6 +59,11 @@
 
 - (NSString *) toString :(BOOL)quote
 {
+    if(nil==_jv){
+        if(!quote){
+            return nil;
+        }
+    }
     if ([_jv isKindOfClass:[NSString class]]){
         if(quote){
             [JSO id2s:_jv];
@@ -82,23 +88,7 @@
 
 - (JSO *) getChild :(NSString *)key
 {
-    if(true)
-        return [self getChildByPath:key];
-    
-    if (key == nil) return nil;
-    
-    if (_jv==nil) return nil;
-    
-    id subid = [_jv valueForKey:key];
-    
-    if(subid != nil){
-        JSO *o =[[JSO alloc] init];
-        
-        [o setValue:subid forKey:@"_jv"];
-        
-        return o;
-    }
-    return nil;
+    return [self getChildByPath:key];
 }
 
 - (void) setChild:(NSString *)k JSO:(JSO *)o{
@@ -122,7 +112,9 @@
 }
 
 -(JSO *) getChildByPath :(NSString *)path{
-    if (_jv==nil) return nil;
+    JSO *o=[[JSO alloc] init];
+    
+    if (_jv==nil) return o;
     id subid;
     @try{
         subid=[_jv valueForKeyPath:path];
@@ -133,15 +125,9 @@
         NSLog(@"getChildByPath() %@", subid);
     }
     if(subid!=nil){
-        //$o=new JSO;
-        JSO *o=[[JSO alloc] init];
-        
-        //$o->setValue("_jv",$idid);
         [o setValue:subid forKey:@"_jv"];
-        return o;
-    }else{
-        return nil;
     }
+    return o;
 }
 
 - (void) removeChild :(NSString *)k{

@@ -8,7 +8,7 @@ for Android/Java Version, please click (https://github.com/SZU-BDI/app-hybrid-co
 
 # Trick
 
-using "id" as a data holder.
+using "id" as a data holder and JSON converter
 
 # Usage
 
