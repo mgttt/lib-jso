@@ -102,10 +102,14 @@
 }
 
 - (void) setChild:(NSString *)k JSO:(JSO *)o{
+    if(k==nil) return;
     
-    if (_jv==nil) return;
+    if (_jv==nil) _jv=@{};//turn my _jv into {} if null
+    
     id childid=[o valueForKey:@"_jv"];
-    if(nil==childid)return;
+    
+    //if(nil==childid)return;
+    
     @try{
         NSMutableDictionary *ddd=(NSMutableDictionary *)_jv;
         [ddd setObject:childid forKey:k];
@@ -169,6 +173,8 @@
 //shallow merge
 -(JSO *) basicMerge:(JSO *)jso
 {
+    if(nil==jso) return self;
+    
     if (_jv==nil) {
         _jv=@{};
     }
