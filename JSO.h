@@ -36,6 +36,18 @@
 
 - (JSO *) copy;
 
+#warning TODO func from JsonValue
+- (BOOL) isNumber;
+- (BOOL) isNull;
+- (BOOL) isString;
+//- (BOOL) isUnknown;
+- (BOOL) isObject;
+- (BOOL) isArray;
+- (BOOL) isTure;
+- (BOOL) isFalse;
+- (NSDictionary *) asObject;//after isObject
+- (NSArray *) asArray;//after isArray
+
 @end
 
 #endif
