@@ -26,9 +26,16 @@
 + (NSString *) id2s :(id)idid :(BOOL)flagThrowEx
 {
     if(nil==idid) return @"null";
-    NSString * s=[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:@[idid] options:0 error:nil] encoding:NSUTF8StringEncoding];
-    s=[[s substringToIndex:([s length]-1)] substringFromIndex:1];
-    return s;
+    @try {
+        NSString * s=[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:@[idid] options:0 error:nil] encoding:NSUTF8StringEncoding];
+        s=[[s substringToIndex:([s length]-1)] substringFromIndex:1];
+        return s;
+    } @catch (NSException *exception) {
+        NSLog(@"failed to json-lize %@ %@",idid,exception);
+    } @finally {
+        
+    }
+    return nil;
 }
 + (JSO *) id2o :(id) idid
 {
@@ -176,7 +183,38 @@
     if (_jv==nil) {
         _jv=@{};
     }
-    [_jv addEntriesFromDictionary:[jso valueForKey:@"_jv"]];
+    
+    
+    if([_jv isKindOfClass:[NSDictionary class]]){
+        NSMutableDictionary *aa=[[NSMutableDictionary alloc] initWithDictionary:_jv];
+        id tgt=[jso toId];
+        if ([tgt isKindOfClass:[NSArray class]]){
+            //NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+            int c =[tgt count];
+            for(int i=0; i<c; i++){
+                id subid=[tgt objectAtIndex:i];
+                NSString *kk=[NSString stringWithFormat:@"%d",i];
+                //[aa setObject:subid forKey:kk];
+                [aa setValue:subid forKey:kk];
+            }
+            _jv=nil;
+            _jv=aa;
+        }else if([tgt isKindOfClass:[NSDictionary class]]){
+            [_jv addEntriesFromDictionary:tgt];
+        }else{
+            NSLog(@" not suitable to do basicMerge: %@", tgt);
+        }
+    }else if([_jv isKindOfClass:[NSArray class]]){
+        NSArray *src=_jv;
+        NSMutableArray *aa=[[NSMutableArray alloc] init];
+        NSArray *tgt=[[jso toId] allValues];
+        //[aa removeObjectsInArray:src];
+        [aa addObjectsFromArray:src];
+        [aa removeObjectsInArray:tgt];
+        [aa addObjectsFromArray:tgt];
+        _jv=nil;
+        _jv=aa;
+    }
     return self;
 }
 
