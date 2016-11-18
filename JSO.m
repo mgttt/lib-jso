@@ -189,8 +189,10 @@
         NSMutableDictionary *aa=[[NSMutableDictionary alloc] initWithDictionary:_jv];
         id tgt=[jso toId];
         if ([tgt isKindOfClass:[NSArray class]]){
+            //NSMutableArray *tgta=(NSMutableArray) tgt;
+            
             //NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-            int c =[tgt count];
+            NSUInteger c =[tgt count];
             for(int i=0; i<c; i++){
                 id subid=[tgt objectAtIndex:i];
                 NSString *kk=[NSString stringWithFormat:@"%d",i];
