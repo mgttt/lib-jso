@@ -8,19 +8,27 @@
 + (id) s2id :(NSString *)s
 {
     NSError *error = nil;
-    
-    id idid = [NSJSONSerialization
-               JSONObjectWithData:[[[@"[" stringByAppendingString:s] stringByAppendingString:@"]"] dataUsingEncoding:NSUTF8StringEncoding]
-               options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves
-               error:&error];
-    
-    if (error.description) {
-        NSLog(@"s2id(%@) err => %@", s, error.description);
-        idid=s;
-    }else{
-        return [idid objectAtIndex:0];
+    @try {
+        
+        id idid = [NSJSONSerialization
+                   JSONObjectWithData:[[[@"[" stringByAppendingString:s] stringByAppendingString:@"]"] dataUsingEncoding:NSUTF8StringEncoding]
+                   options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves
+                   error:&error];
+        
+        if (error.description) {
+            NSLog(@"s2id(%@) err => %@", s, error.description);
+            idid=s;
+        }else{
+            return [idid objectAtIndex:0];
+        }
+        return idid;
+    } @catch (NSException *exception) {
+        NSLog(@" error about s2id %@", [exception reason]);
+    } @finally {
+        
     }
-    return idid;
+    return nil;
+    
 }
 
 + (NSString *) id2s :(id)idid :(BOOL)flagThrowEx
