@@ -1,4 +1,4 @@
-# lib-ios-jso
+# lib-jso
 
 a tiny JSON Object-String bidirectional library for iOS (JSO.h/JSO.m)
 
@@ -12,9 +12,9 @@ using "id" as a data holder and JSON converter
 
 # Usage
 
-https://github.com/SZU-BDI/lib-ios-jso/blob/master/JSO.h
+https://github.com/SZU-BDI/lib-jso/blob/master/JSO.h
 
-https://github.com/SZU-BDI/lib-ios-jso/blob/master/JSO.m
+https://github.com/SZU-BDI/lib-jso/blob/master/JSO.m
 
 ## Pseudo Code:
 
