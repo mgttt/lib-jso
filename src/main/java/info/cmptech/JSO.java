@@ -6,11 +6,7 @@ package info.cmptech; /**
  * com.eclipsesource.json.*
  */
 
-import com.eclipsesource.json.Json;
-import com.eclipsesource.json.JsonArray;
-import com.eclipsesource.json.JsonObject;
-import com.eclipsesource.json.JsonValue;
-import com.eclipsesource.json.ParseException;
+import com.eclipsesource.json.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +44,24 @@ public final class JSO {
             rt.merge(temp);
         }
         return rt;
+    }
+
+    static public String o2s(JSO o) {
+        return (o == null) ? null : o.toString();
+    }
+
+    final static public JSO s2o(String s) {
+        JsonValue jv = null;
+        try {
+            if (s == null) jv = Json.NULL;
+            else jv = Json.parse(s);
+        } catch (ParseException ex) {
+            //ex.printStackTrace();
+            jv = Json.value(s);
+        }
+        JSO jso = new JSO();
+        jso.setValue(jv);
+        return jso;
     }
 
     //@warning, the merge() will change the inner jv
@@ -95,6 +109,10 @@ public final class JSO {
         }
     }
 
+    protected JsonValue getValue() {
+        return _jv;
+    }
+
     private void setValue(Object v) {
         if (v instanceof JsonValue) _jv = (JsonValue) v;
         else {
@@ -108,10 +126,6 @@ public final class JSO {
                 if (null == _jv) _jv = Json.NULL;
             }
         }
-    }
-
-    protected JsonValue getValue() {
-        return _jv;
     }
 
     public String toString() {
@@ -163,24 +177,6 @@ public final class JSO {
         }
     }
 
-    static public String o2s(JSO o) {
-        return (o == null) ? null : o.toString();
-    }
-
-    final static public JSO s2o(String s) {
-        JsonValue jv = null;
-        try {
-            if (s == null) jv = Json.NULL;
-            else jv = Json.parse(s);
-        } catch (ParseException ex) {
-            //ex.printStackTrace();
-            jv = Json.value(s);
-        }
-        JSO jso = new JSO();
-        jso.setValue(jv);
-        return jso;
-    }
-
     public void setChild(String k, String childAsString) {
         this.setChild(k, JSO.s2o(childAsString));
     }
@@ -196,23 +192,10 @@ public final class JSO {
         }
     }
 
-    //for JA
-//    public info.cmptech.JSO getChild(int i) {
-//        info.cmptech.JSO jso = new info.cmptech.JSO();
-//        if (_jv instanceof JsonArray) {
-//            try {
-//                JsonValue jv = _jv.asArray().get(i);
-//                jso.setValue(jv);
-//            } catch (IndexOutOfBoundsException ex) {
-//            }
-//        }
-//        return jso;
-//    }
-
     //for JO
     public JSO getChild(String k) {
         JSO jso = new JSO();
-        if (k!=null && _jv instanceof JsonObject) {
+        if (k != null && _jv instanceof JsonObject) {
             JsonValue jv = _jv.asObject().get(k);
             jso.setValue(jv);
         }

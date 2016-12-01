@@ -1,8 +1,14 @@
-apply plugin: 'java'
+apply plugin: 'com.android.library'
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+android {
+    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+    }
 }
-
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+dependencies {
+    compile files('libs/minimal-json-0.9.4.jar')
+}
