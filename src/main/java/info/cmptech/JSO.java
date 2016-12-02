@@ -4,6 +4,9 @@ package info.cmptech; /**
  * dependency:
  * https://github.com/ralfstx/minimal-json/
  * com.eclipsesource.json.*
+ * <p>
+ * Author: Wanjo Chan
+ * Date: 2016
  */
 
 import com.eclipsesource.json.*;
@@ -57,7 +60,7 @@ public final class JSO {
             else jv = Json.parse(s);
         } catch (ParseException ex) {
             //ex.printStackTrace();
-            jv = Json.value(s);
+            jv = Json.value(s);//if ParseException, regard as a "String" type only...
         }
         JSO jso = new JSO();
         jso.setValue(jv);
@@ -177,8 +180,16 @@ public final class JSO {
         }
     }
 
+    public static JSO valueOf(String s) {
+        JSO jso = new JSO();
+        jso.setValue(Json.value(s));
+        return jso;
+    }
+
+    //NOTES: this is tricky or not very good here.... if the child is "json-string", will try convert....which not standard...
     public void setChild(String k, String childAsString) {
-        this.setChild(k, JSO.s2o(childAsString));
+        //this.setChild(k, JSO.s2o(childAsString));
+        this.setChild(k, JSO.valueOf(childAsString));
     }
 
     public void setChild(String k, JSO chd) {
