@@ -130,7 +130,8 @@
     
     @try{
         NSMutableDictionary *ddd=(NSMutableDictionary *)_jv;
-        [ddd setObject:childid forKey:k];
+        //[ddd setObject:childid forKey:k];
+        [ddd setValue:childid forKey:k];
     }
     @catch (NSException *theException)
     {
