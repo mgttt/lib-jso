@@ -121,8 +121,9 @@
 - (void) setChild:(NSString *)k JSO:(JSO *)o{
     if(k==nil) return;
     
-    if (_jv==nil) _jv=@{};//turn my _jv into {} if null
-    
+    if (_jv==nil) {
+        _jv=[[NSMutableDictionary alloc] init];
+    }
     id childid=[o valueForKey:@"_jv"];
     
     //if(nil==childid)return;
