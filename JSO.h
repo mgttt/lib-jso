@@ -38,7 +38,7 @@
 
 //#warning TODO func from JsonValue
 //- (BOOL) isNumber;
-//- (BOOL) isNull;
+- (BOOL) isNull;
 //- (BOOL) isString;
 ////- (BOOL) isUnknown;
 //- (BOOL) isObject;

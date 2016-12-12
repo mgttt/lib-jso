@@ -9,7 +9,7 @@
 {
     NSError *error = nil;
     @try {
-        
+        if(nil==s)s=@"null";
         id idid = [NSJSONSerialization
                    JSONObjectWithData:[[[@"[" stringByAppendingString:s] stringByAppendingString:@"]"] dataUsingEncoding:NSUTF8StringEncoding]
                    options:NSJSONReadingAllowFragments|NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves
@@ -191,9 +191,8 @@
     if(nil==jso) return self;
     
     if (_jv==nil) {
-        _jv=@{};
+        _jv=[[NSMutableArray alloc]init];
     }
-    
     
     if([_jv isKindOfClass:[NSDictionary class]]){
         NSMutableDictionary *aa=[[NSMutableDictionary alloc] initWithDictionary:_jv];
@@ -234,5 +233,10 @@
 {
     return [JSO s2o:[self toString]];
 }
-
+- (BOOL) isNull{
+    if (_jv==nil) {
+        return true;
+    }
+    return false;
+}
 @end
