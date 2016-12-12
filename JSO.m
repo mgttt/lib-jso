@@ -58,13 +58,6 @@
 
 + (JSO *) s2o :(NSString *)s
 {
-    //    id idid = [self s2id:s];
-    //
-    //    JSO *o = [[JSO alloc] init];
-    //
-    //    [o setValue:idid forKey:@"_jv"];
-    //
-    //    return o;
     return [self id2o:[self s2id:s]];
 }
 
